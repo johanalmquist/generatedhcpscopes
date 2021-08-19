@@ -1,0 +1,12 @@
+{% for network in networks %}
+    # {{network['site']}}
+    subnet {{network['ip']}} netmask {{network['mask']}} {
+        option routers {{network['gateway']}};
+        option domain-name-servers {{network['primaryDNS']}}, {{network['secondaryDNS']}};
+        option broadcast-address {{network['broadcast']}};
+        pool {
+            failover peer "failover-partner";
+            range {{network['start_range']}} {{network['end_range']}};
+        }
+    }
+{% endfor %}
