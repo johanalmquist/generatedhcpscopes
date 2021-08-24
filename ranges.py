@@ -69,7 +69,7 @@ class Ranges:
             # Skip first line in csv_file
             next(csv_reader)
             for line in csv_reader:
-                ip_range = IPNetwork(line[2])
+                ip_range = IPNetwork(line[1])
                 #print(dir(ip_range.network))
                 self.networks.append({
                                     'site':line[0], 
